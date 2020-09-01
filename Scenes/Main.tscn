@@ -1,0 +1,806 @@
+[gd_scene load_steps=34 format=2]
+
+[ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Fonts/FreeSans.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Fonts/FreeSansBold.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Fonts/FreeSansItalic.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Fonts/FreeSansBoldItalic.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Images/Gamepad/HintInteract.png" type="Texture" id=7]
+[ext_resource path="res://Images/UI/checkpoint.png" type="Texture" id=9]
+[ext_resource path="res://Scenes/LoadingScene.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Images/UI/saved.png" type="Texture" id=11]
+[ext_resource path="res://Images/UI/TimeClock_Base.png" type="Texture" id=12]
+[ext_resource path="res://Images/UI/TimeClock_Sun.png" type="Texture" id=13]
+[ext_resource path="res://Fonts/FreeSansBoldOblique.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://Fonts/FreeSansBold.ttf" type="DynamicFontData" id=15]
+[ext_resource path="res://Images/UI/button_focus.png" type="Texture" id=16]
+[ext_resource path="res://Images/UI/button_down.png" type="Texture" id=17]
+[ext_resource path="res://Images/UI/button_normal.png" type="Texture" id=18]
+[ext_resource path="res://Animations/Env_TrackingOn.tres" type="Animation" id=19]
+[ext_resource path="res://Animations/Env_TrackingOff.tres" type="Animation" id=20]
+
+[sub_resource type="Animation" id=1]
+resource_name = "HideClock"
+length = 0.2
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.2 )
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "ShowClock"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0, 0, 0.501961 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.498039, 0.498039, 0.498039, 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 21
+use_filter = true
+extra_spacing_top = -4
+extra_spacing_bottom = -4
+font_data = ExtResource( 14 )
+
+[sub_resource type="Animation" id=5]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MainLabel:percent_visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="World" id=7]
+
+[sub_resource type="Animation" id=8]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../CheckpointHintTexture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.564474, 1.49282, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../SavedHintTexture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.564474, 1.49282, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="DynamicFont" id=10]
+size = 12
+use_filter = true
+font_data = ExtResource( 15 )
+
+[sub_resource type="Animation" id=11]
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("GameOverFade:color:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("GameOverFade:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.1
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("GameOverFade:color:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("GameOverFade:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="ProceduralSky" id=13]
+sky_top_color = Color( 0.835294, 0.909804, 0.94902, 1 )
+sky_horizon_color = Color( 0.98, 0.98, 0.98, 1 )
+
+[sub_resource type="Environment" id=14]
+background_mode = 2
+background_sky = SubResource( 13 )
+dof_blur_far_distance = 20.0
+glow_enabled = true
+glow_intensity = 0.6
+glow_blend_mode = 0
+adjustment_enabled = true
+
+[node name="Main" type="Spatial"]
+script = ExtResource( 1 )
+CameraRotationSpeed = 2.0
+CameraAngleNormal = -0.27
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+PlayerRotationSpeed = 3.0
+PlayerMoveSpeed = 1.5
+PlayerJumpSpeed = 10.0
+PlayerJumpDecay = 0.04
+PlayerRunSpeed = 1.8
+
+[node name="CameraTripod" type="Spatial" parent="."]
+
+[node name="CameraArm" type="Spatial" parent="CameraTripod"]
+transform = Transform( 1, 0, 0, 0, 0.939692, 0.34202, 0, -0.34202, 0.939692, 0, 0.377643, 0 )
+
+[node name="Camera" type="Camera" parent="CameraTripod/CameraArm"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+far = 600.0
+
+[node name="RayCast0" type="RayCast" parent="CameraTripod/CameraArm"]
+enabled = true
+exclude_parent = false
+cast_to = Vector3( 0, 0, 2 )
+
+[node name="RayCast1" type="RayCast" parent="CameraTripod/CameraArm"]
+transform = Transform( 0.984808, -0.0593912, 0.163176, 0, 0.939693, 0.34202, -0.173648, -0.336824, 0.925416, 0, 0, 0 )
+enabled = true
+exclude_parent = false
+cast_to = Vector3( 0, 0, 2 )
+
+[node name="RayCast2" type="RayCast" parent="CameraTripod/CameraArm"]
+transform = Transform( 0.984808, 0.0593912, -0.163176, 0, 0.939693, 0.34202, 0.173648, -0.336824, 0.925416, 0, 0, 0 )
+enabled = true
+exclude_parent = false
+cast_to = Vector3( 0, 0, 2 )
+
+[node name="RayCast3" type="RayCast" parent="CameraTripod/CameraArm"]
+transform = Transform( 0.984808, 0.0301537, 0.17101, 0, 0.984808, -0.173648, -0.173648, 0.17101, 0.969846, 0, 0, 0 )
+enabled = true
+exclude_parent = false
+cast_to = Vector3( 0, 0, 2 )
+
+[node name="RayCast4" type="RayCast" parent="CameraTripod/CameraArm"]
+transform = Transform( 0.984808, -0.0301537, -0.17101, 0, 0.984808, -0.173648, 0.173648, 0.17101, 0.969846, 0, 0, 0 )
+enabled = true
+exclude_parent = false
+cast_to = Vector3( 0, 0, 2 )
+
+[node name="Interface" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeClock" type="Control" parent="Interface"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -152.0
+margin_top = 8.0
+margin_right = -24.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 128, 128 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeCursor" type="Control" parent="Interface/TimeClock"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_top = -17.0
+margin_bottom = -17.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeCursorTexture" type="TextureRect" parent="Interface/TimeClock/TimeCursor"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -96.0
+margin_top = 48.0
+margin_bottom = 144.0
+rect_rotation = -90.0
+texture = ExtResource( 13 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeBase" type="TextureRect" parent="Interface/TimeClock"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 12 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Interface/TimeClock"]
+anims/HideClock = SubResource( 1 )
+anims/ShowClock = SubResource( 2 )
+
+[node name="DialogPanel" type="Panel" parent="Interface"]
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = -140.0
+margin_right = -16.0
+margin_bottom = -16.0
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainLabel" type="RichTextLabel" parent="Interface/DialogPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 12.0
+margin_top = 12.0
+margin_right = -12.0
+margin_bottom = -12.0
+custom_fonts/bold_italics_font = SubResource( 4 )
+custom_fonts/italics_font = ExtResource( 5 )
+custom_fonts/bold_font = ExtResource( 4 )
+custom_fonts/normal_font = ExtResource( 3 )
+bbcode_enabled = true
+visible_characters = 0
+percent_visible = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TexX" type="TextureRect" parent="Interface/DialogPanel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -61.0
+margin_top = -26.0
+margin_right = -7.0
+margin_bottom = -5.0
+texture = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Interface/DialogPanel"]
+anims/FadeIn = SubResource( 5 )
+anims/FadeOut = SubResource( 6 )
+
+[node name="LevelLoadingPanel" type="Control" parent="Interface"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Interface/LevelLoadingPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ViewportContainer" type="ViewportContainer" parent="Interface/LevelLoadingPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="Interface/LevelLoadingPanel/ViewportContainer"]
+size = Vector2( 1024, 600 )
+own_world = true
+world = SubResource( 7 )
+handle_input_locally = false
+msaa = 2
+render_target_update_mode = 0
+
+[node name="LoadingScene" parent="Interface/LevelLoadingPanel/ViewportContainer/Viewport" instance=ExtResource( 10 )]
+
+[node name="Label" type="Label" parent="Interface/LevelLoadingPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -290.5
+margin_top = 80.0
+margin_right = -205.5
+margin_bottom = 96.0
+custom_fonts/font = ExtResource( 6 )
+text = "Loading..."
+
+[node name="ErrorLabel" type="Label" parent="Interface/LevelLoadingPanel"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -290.5
+margin_top = 131.0
+margin_right = -205.5
+margin_bottom = 147.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0.784314, 0.27451, 0.152941, 1 )
+text = "Sorry, a serious error occurred.
+Please start the game again."
+
+[node name="CheckpointHintTexture" type="TextureRect" parent="Interface"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 200.0
+margin_bottom = 64.0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Interface/CheckpointHintTexture"]
+anims/HitCheckpoint = SubResource( 8 )
+
+[node name="SavedHintTexture" type="TextureRect" parent="Interface"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 200.0
+margin_bottom = 64.0
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Interface/SavedHintTexture"]
+anims/Saved = SubResource( 9 )
+
+[node name="Menu" type="Control" parent="Interface"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuBG" type="ColorRect" parent="Interface/Menu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.376471 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnBackToGame" type="TextureButton" parent="Interface/Menu"]
+margin_left = 25.0
+margin_top = 39.0
+margin_right = 205.0
+margin_bottom = 99.0
+texture_normal = ExtResource( 18 )
+texture_pressed = ExtResource( 17 )
+texture_focused = ExtResource( 16 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Interface/Menu/BtnBackToGame"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.35, 0.342708, 0.2625, 1 )
+text = "RESUME GAME"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnSaveGame" type="TextureButton" parent="Interface/Menu"]
+margin_left = 25.0
+margin_top = 103.0
+margin_right = 205.0
+margin_bottom = 163.0
+texture_normal = ExtResource( 18 )
+texture_pressed = ExtResource( 17 )
+texture_focused = ExtResource( 16 )
+expand = true
+
+[node name="Label2" type="Label" parent="Interface/Menu/BtnSaveGame"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.35, 0.342708, 0.2625, 1 )
+text = "SAVE GAME"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnBackToCheckpoint" type="TextureButton" parent="Interface/Menu"]
+margin_left = 25.0
+margin_top = 167.0
+margin_right = 205.0
+margin_bottom = 227.0
+texture_normal = ExtResource( 18 )
+texture_pressed = ExtResource( 17 )
+texture_focused = ExtResource( 16 )
+expand = true
+
+[node name="Label3" type="Label" parent="Interface/Menu/BtnBackToCheckpoint"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.35, 0.342708, 0.2625, 1 )
+text = "RETURN TO
+CHECKPOINT"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnQuitToIntro" type="TextureButton" parent="Interface/Menu"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 24.0
+margin_top = -83.0
+margin_right = 204.0
+margin_bottom = -23.0
+texture_normal = ExtResource( 18 )
+texture_pressed = ExtResource( 17 )
+texture_focused = ExtResource( 16 )
+expand = true
+
+[node name="Label4" type="Label" parent="Interface/Menu/BtnQuitToIntro"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.35, 0.342708, 0.2625, 1 )
+text = "QUIT TO MAIN MENU"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckpointConfirmation" type="ColorRect" parent="Interface/Menu"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.501961 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnCancel" type="TextureButton" parent="Interface/Menu/CheckpointConfirmation"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 27.0
+margin_top = -147.0
+margin_right = 207.0
+margin_bottom = -87.0
+focus_neighbour_left = NodePath("../BtnConfirm")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+focus_next = NodePath("../BtnConfirm")
+focus_previous = NodePath("../BtnConfirm")
+texture_normal = ExtResource( 18 )
+texture_pressed = ExtResource( 17 )
+texture_focused = ExtResource( 16 )
+expand = true
+
+[node name="Label4" type="Label" parent="Interface/Menu/CheckpointConfirmation/BtnCancel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.35, 0.342708, 0.2625, 1 )
+text = "BACK TO
+GAME MENU"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnConfirm" type="TextureButton" parent="Interface/Menu/CheckpointConfirmation"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -214.0
+margin_top = -147.0
+margin_right = -34.0
+margin_bottom = -87.0
+focus_neighbour_left = NodePath("../BtnCancel")
+focus_neighbour_top = NodePath("../BtnCancel")
+focus_neighbour_right = NodePath("../BtnCancel")
+focus_neighbour_bottom = NodePath("../BtnCancel")
+focus_next = NodePath("../BtnCancel")
+focus_previous = NodePath("../BtnCancel")
+texture_normal = ExtResource( 18 )
+texture_pressed = ExtResource( 17 )
+texture_focused = ExtResource( 16 )
+expand = true
+
+[node name="Label5" type="Label" parent="Interface/Menu/CheckpointConfirmation/BtnConfirm"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.35, 0.342708, 0.2625, 1 )
+text = "RESTART FROM
+LAST CHECKPOINT"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitConfirmation" type="ColorRect" parent="Interface/Menu"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.501961 )
+
+[node name="BtnCancel" type="TextureButton" parent="Interface/Menu/QuitConfirmation"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 27.0
+margin_top = -147.0
+margin_right = 207.0
+margin_bottom = -87.0
+focus_neighbour_left = NodePath("../BtnConfirm")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+focus_next = NodePath("../BtnConfirm")
+focus_previous = NodePath("../BtnConfirm")
+texture_normal = ExtResource( 18 )
+texture_pressed = ExtResource( 17 )
+texture_focused = ExtResource( 16 )
+expand = true
+
+[node name="Label5" type="Label" parent="Interface/Menu/QuitConfirmation/BtnCancel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.35, 0.342708, 0.2625, 1 )
+text = "BACK TO
+GAME MENU"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnConfirm" type="TextureButton" parent="Interface/Menu/QuitConfirmation"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -217.0
+margin_top = -147.0
+margin_right = -37.0
+margin_bottom = -87.0
+focus_neighbour_left = NodePath("../BtnCancel")
+focus_neighbour_top = NodePath("../BtnCancel")
+focus_neighbour_right = NodePath("../BtnCancel")
+focus_neighbour_bottom = NodePath("../BtnCancel")
+focus_next = NodePath("../BtnCancel")
+focus_previous = NodePath("../BtnCancel")
+texture_normal = ExtResource( 18 )
+texture_pressed = ExtResource( 17 )
+texture_focused = ExtResource( 16 )
+expand = true
+
+[node name="Label6" type="Label" parent="Interface/Menu/QuitConfirmation/BtnConfirm"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.35, 0.342708, 0.2625, 1 )
+text = "QUIT TO
+MAIN MENU"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverFade" type="ColorRect" parent="Interface"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverAnim" type="AnimationPlayer" parent="Interface"]
+autoplay = "Reset"
+anims/GameOver = SubResource( 11 )
+anims/Reset = SubResource( 12 )
+
+[node name="EnvironmentAnimations" type="AnimationPlayer" parent="."]
+anims/TrackingOff = ExtResource( 20 )
+anims/TrackingOn = ExtResource( 19 )
+
+[node name="TrackingTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Level" type="Spatial" parent="."]
+__meta__ = {
+"_editor_description_": "This node will be replaced by the actual level, but must be kept here while opening Main.tscn in the editor since the EnvironmentAnimations node accesses Main/Level/WorldEnv which must be preset at all times."
+}
+
+[node name="WorldEnv" type="WorldEnvironment" parent="Level"]
+environment = SubResource( 14 )
+[connection signal="pressed" from="Interface/Menu/BtnBackToGame" to="." method="_on_Menu_BtnBackToGame_pressed"]
+[connection signal="pressed" from="Interface/Menu/BtnSaveGame" to="." method="_on_Menu_BtnSaveGame_pressed"]
+[connection signal="pressed" from="Interface/Menu/BtnBackToCheckpoint" to="." method="_on_Menu_BtnBackToCheckpoint_pressed"]
+[connection signal="pressed" from="Interface/Menu/BtnQuitToIntro" to="." method="_on_Menu_BtnQuitToIntro_pressed"]
+[connection signal="pressed" from="Interface/Menu/CheckpointConfirmation/BtnCancel" to="." method="_on_Menu_CheckPoint_BtnCancel_pressed"]
+[connection signal="pressed" from="Interface/Menu/CheckpointConfirmation/BtnConfirm" to="." method="_on_Menu_CheckPoint_BtnConfirm_pressed"]
+[connection signal="pressed" from="Interface/Menu/QuitConfirmation/BtnCancel" to="." method="_on_Menu_Quit_BtnCancel_pressed"]
+[connection signal="pressed" from="Interface/Menu/QuitConfirmation/BtnConfirm" to="." method="_on_Menu_Quit_BtnConfirm_pressed"]
+[connection signal="timeout" from="TrackingTimer" to="." method="_on_TrackingTimer_timeout"]

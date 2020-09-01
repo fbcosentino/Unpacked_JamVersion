@@ -1,0 +1,136 @@
+[gd_resource type="Animation" format=2]
+
+[resource]
+resource_name = "Pick"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("../AppleWhole:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../AppleEaten:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../Triggers/RavenFruitTrackPoint:Enabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../../Triggers/RavenPickFruit:Enabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../../Triggers/RavenGiveFruit:Enabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../../Triggers/RavenLizardTrack1:Enabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../../Triggers/RavenLizardTrack2:Enabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../../Terrain/ForestAndSurrouding/BlockRock:translation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 13.8272, -7.79132, -110.493 ) ]
+}
+tracks/8/type = "transform"
+tracks/8/path = NodePath("Model/Skeleton:head")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = true
+tracks/8/enabled = true
+tracks/8/keys = PoolRealArray( 0, 1, 0, 0, 2.98023e-08, -2.98023e-08, -1.65436e-24, 6.61744e-24, 1, 1, 1, 1 )
+tracks/9/type = "transform"
+tracks/9/path = NodePath("Model/Skeleton:neck")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = true
+tracks/9/enabled = true
+tracks/9/keys = PoolRealArray( 0, 1, 0, 2.98023e-08, 0, 0, 4.75629e-24, 2.66249e-24, 1, 1, 1, 1 )
+tracks/10/type = "transform"
+tracks/10/path = NodePath("Model/Skeleton:chest")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = true
+tracks/10/enabled = true
+tracks/10/keys = PoolRealArray( 0, 1, -2.64698e-23, 0, 0, 0, 0, -4.96308e-24, 1, 1, 1, 1 )
+tracks/11/type = "transform"
+tracks/11/path = NodePath("Model/Skeleton:torso")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = true
+tracks/11/enabled = true
+tracks/11/keys = PoolRealArray( 0, 1, 0, 0, 0, 1.49012e-08, 6.16298e-32, 4.1359e-24, 1, 1, 1, 1 )
+tracks/12/type = "transform"
+tracks/12/path = NodePath("Model/Skeleton:base")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = true
+tracks/12/enabled = true
+tracks/12/keys = PoolRealArray( 0, 1, -1.32349e-23, 0, 0, 0, 0, -5.29396e-23, 1, 1, 1, 1 )

@@ -1,0 +1,17 @@
+[gd_resource type="SpatialMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://Images/Textures/SmellEffect/SmellTexture.tres" type="Texture" id=1]
+
+[resource]
+flags_transparent = true
+params_diffuse_mode = 1
+params_depth_draw_mode = 3
+albedo_color = Color( 0, 0, 0, 1 )
+albedo_texture = ExtResource( 1 )
+metallic_specular = 0.0
+emission_enabled = true
+emission = Color( 0.133333, 0.956863, 0.917647, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+uv1_scale = Vector3( 0.5, 0.2, 0.5 )

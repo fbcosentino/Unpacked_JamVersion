@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/btn_x.png-f63f5509504c3420e323e8aa108dc82b.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Images/Gamepad/btn_x.png"
+dest_files=[ "res://.import/btn_x.png-f63f5509504c3420e323e8aa108dc82b.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

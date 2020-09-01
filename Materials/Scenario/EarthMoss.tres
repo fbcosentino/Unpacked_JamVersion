@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=2]
+
+[ext_resource path="res://Shaders/MossSurface.shader" type="Shader" id=1]
+[ext_resource path="res://Images/Textures/grass1.png" type="Texture" id=2]
+[ext_resource path="res://Images/Textures/earth1.png" type="Texture" id=3]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/albedo = Color( 0.509804, 0.458824, 0.411765, 1 )
+shader_param/albedo_top = Color( 1, 1, 1, 1 )
+shader_param/specular = 0.5
+shader_param/metallic = 0.0
+shader_param/roughness = 0.891667
+shader_param/uv1_blend_sharpness = 1.0
+shader_param/uv1_scale = Vector3( 0.3, 0.3, 1 )
+shader_param/uv1_offset = Vector3( 3, 0, 0 )
+shader_param/uv1_top_scale = Vector3( 2, 2, 2 )
+shader_param/UpSideThreshold = 0.615
+shader_param/UpSideSharpness = 3.0
+shader_param/texture_albedo = ExtResource( 3 )
+shader_param/texture_albedo_top = ExtResource( 2 )
